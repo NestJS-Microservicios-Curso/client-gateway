@@ -6,7 +6,7 @@ import { RpcCustomExceptionFilter } from './common';
 
 async function bootstrap() {
   // Creating a logger instance to log messages related to the main application
-  const logger = new Logger('Main-Gateway');
+  const logger = new Logger('Client-Gateway-Main');
 
   const app = await NestFactory.create(AppModule);
 

@@ -1,22 +1,11 @@
 import { Module } from '@nestjs/common';
 import { OrdersController } from './orders.controller';
-import { ClientsModule, Transport } from '@nestjs/microservices';
-import { envs, ORDERS_SERVICE } from '../config';
+import { NatsModule } from '../transports/nats.module';
 
 @Module({
   controllers: [OrdersController],
-  imports: [
-    // Registering a microservice client
-    ClientsModule.register([
-      {
-        name: ORDERS_SERVICE, // Name of the microservice client
-        transport: Transport.TCP, // Using TCP transport, the communication channel between the gateway and the microservice will be TCP
-        options: {
-          host: envs.ordersMicroservice.host, // Host where the microservice is running
-          port: envs.ordersMicroservice.port, // Port on which the microservice is listening
-        },
-      },
-    ]),
-  ],
+  providers: [],
+  // Registering the NatsModule to enable communication with the NATS microservice
+  imports: [NatsModule],
 })
 export class OrdersModule {}

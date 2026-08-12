@@ -46,6 +46,9 @@ Default variables:
 ## Running the Application
 
 ```bash
+# Run Nats server (if not already running)
+docker run -d --name nats-main -p 4222:4222 -p 6222:6222 -p 8222:8222 nats
+
 # Development mode
 npm run start:dev
 
@@ -92,3 +95,11 @@ All endpoints are prefixed with `/api`.
 - **Transport**: REST (Express) to Microservices TCP ClientProxy
 - **Validation**: `class-validator` & `class-transformer`
 - **Error Handling**: Custom RPC Exception Filter
+
+---
+
+## Nats
+
+```bash
+docker run -d --name nats-main -p 4222:4222 -p 6222:6222 -p 8222:8222 nats
+```
