@@ -30,3 +30,8 @@ Thumbs.db
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
+
+# AI Assistants
+.agents/
+.claude/
+.windsurf/
