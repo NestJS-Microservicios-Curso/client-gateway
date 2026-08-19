@@ -8,7 +8,9 @@ async function bootstrap() {
   // Creating a logger instance to log messages related to the main application
   const logger = new Logger('Client-Gateway-Main');
 
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create(AppModule, {
+    rawBody: true, // Enable raw body parsing for Stripe webhook verification
+  });
 
   // Setting a global prefix for all routes in the application
   app.setGlobalPrefix('api');
