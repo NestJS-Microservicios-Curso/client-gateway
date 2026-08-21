@@ -6,7 +6,7 @@ import tseslint from 'typescript-eslint';
 
 export default tseslint.config(
   {
-    ignores: ['eslint.config.mjs'],
+    ignores: ['eslint.config.mjs', 'src/generated/**'],
   },
   eslint.configs.recommended,
   ...tseslint.configs.recommended,
@@ -19,7 +19,14 @@ export default tseslint.config(
       },
       sourceType: 'commonjs',
       parserOptions: {
-        projectService: true,
+        projectService: {
+          allowDefaultProject: [
+            'src/*/*.spec.ts',
+            'src/*/*/*.spec.ts',
+            'test/*.ts',
+          ],
+          defaultProject: './tsconfig.spec.json',
+        },
         tsconfigRootDir: import.meta.dirname,
       },
     },
